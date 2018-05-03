@@ -7,22 +7,14 @@
 
 ## How To
 
-### Container Image
-
 * Build and push image
 
 ```
-    $ docker build -t [your/repo/name]
+    $ docker build -t [your/repo/name] .
     $ docker push [your/repo/name]
 ```
 
-* Generate K8s manifests
-
-```
-    $ sonobuoy gen > sonobuoy.yaml
-```
-
-* Modify the configmap in `sonobuoy.yaml` to add the custom config in `./plugins/`
+* Set your image. The `sonobuoy.yaml` manifest contains a configmap `sonobuoy-plugins-cm`. That configmap contains a file called `helloworld-config.yaml`.  In that config file replace `quay.io/lander2k2/sonobuoy-plugin-helloworld:0.2` with your repo name created in the previous step.
 
 * Deploy sonobuoy
 
@@ -45,7 +37,8 @@
 * Examine results
 
 ```
-    $ tar xvf [tar file]
-    $ cat plugins/helloworld/results
+    $ mkdir results
+    $ tar xvf [tar file] -C results
+    $ cat results/plugins/helloworld/results/result
 ```
 
