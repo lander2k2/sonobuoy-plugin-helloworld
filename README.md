@@ -1,5 +1,9 @@
 # Sonobuoy Plugin Hello World!
 
+[Sonobuoy](https://github.com/heptio/sonobuoy) is a tool used to run conformance scans on Kubernetes clusters.  It has some very useful default plugins that can tell you a lot about your cluster, but you can also add your own plugins.
+
+Adding a custom plugin involves creating a contianer image that will test for the conditions you want and provide the results back to sonobuoy, then tell sonobuoy to run your test.
+
 ## Prerequisites
 
 * running Kubernetes cluster
